@@ -1,19 +1,17 @@
-# Projet SQL B2 - clAra Mobility 
+# Projet B2 : Base de données clAra Mobility 🚗
 
-**Auteur :** Ugo Pierre
+Voici mon rendu pour le projet SQL.
+Le but était de créer une base de données pour gérer une flotte de voitures électriques (utilisateurs, locations, état des voitures...).
 
-## 📋 Description du projet
-Ce dépôt contient le code SQL complet pour la gestion de la flotte de véhicules électriques de la start-up **clAra Mobility**.
-Le projet intègre la gestion des véhicules, des clients et des réservations.
+## Ce que contient le projet
+* **Les données :** J'ai importé environ 200 véhicules (avec immatriculation, autonomie, ville...).
+* **La structure :** J'ai utilisé la méthode Merise pour séparer les données proprement (tables Marques, Énergies, etc.).
+* **Sécurité (Trigger) :** J'ai codé une protection automatique qui empêche de réserver une voiture si elle est notée "En maintenance" ou "Hors service".
+* **Simplification (Vue) :** Une vue SQL permet de lire les réservations avec les noms des clients au lieu des numéros.
 
-## 🛠️ Contenu technique
-* **Modélisation :** Tables normalisées (Véhicules, Marques, Énergies).
-* **Données :** Importation de 200 véhicules réels.
-* **Sécurité :** Utilisation de **Triggers** pour empêcher la location de véhicules en panne.
-* **Facilité :** Vue SQL pour simplifier la lecture des factures.
+## Les fichiers du dépôt
+* `projet_clara_final.sql` : C'est le fichier complet (généré par pgAdmin). Il contient **toutes les données** et permet de restaurer la base entièrement.
+* `source_code_lisible.sql` : Une version épurée et commentée de mon code, pour mieux comprendre la structure et les triggers sans tout le blabla technique.
 
-## 🚀 Comment lancer la base de données ?
-1. Télécharger le fichier `projet_clara_final.sql`.
-2. Ouvrir pgAdmin 4.
-3. Créer une base de données vide.
-4. Faire un clic-droit sur la base > **Restore** et sélectionner le fichier SQL.
+## Comment tester ?
+Il suffit de restaurer le fichier `projet_clara_final.sql` dans une base de données vide sur PostgreSQL.
