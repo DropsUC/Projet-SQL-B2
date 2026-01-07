@@ -1,6 +1,6 @@
 # 📘 Dossier d'Analyse (Méthode Merise)
 
-Ce document détaille la conception de la base de données **clAra Mobility**.
+Ce document détaille la conception de la base de données **clara Mobility**.
 
 ---
 
