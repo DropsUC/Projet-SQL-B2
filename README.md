@@ -15,3 +15,34 @@ Le but était de créer une base de données pour gérer une flotte de voitures 
 
 ## Comment tester ?
 Il suffit de restaurer le fichier `projet_clara_final.sql` dans une base de données vide sur PostgreSQL.
+
+
+
+
+
+erDiagram
+    UTILISATEURS ||--o{ RESERVATIONS : "effectue"
+    VEHICULES ||--o{ RESERVATIONS : "concerne"
+    MARQUES ||--|{ VEHICULES : "construit"
+    ENERGIES ||--|{ VEHICULES : "alimente"
+
+    UTILISATEURS {
+        int id_utilisateur
+        string nom
+        string prenom
+        string email
+    }
+
+    VEHICULES {
+        int id_vehicule
+        string modele
+        int autonomie
+        string etat
+    }
+
+    RESERVATIONS {
+        int id_reservation
+        date date_debut
+        date date_fin
+        float cout
+    }
