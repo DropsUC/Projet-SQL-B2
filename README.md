@@ -1,4 +1,4 @@
-# Projet SQL : clAra Mobility 🚘⚡
+# Projet SQL : Clara Mobility 🚘⚡
 
 
 ## À propos du projet
