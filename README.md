@@ -47,11 +47,3 @@ J'ai sorti les marques et les énergies dans des tables à part pour éviter les
 J'ai généré le schéma visuel directement avec l'outil de pgAdmin (ERD) pour être sûr qu'il corresponde exactement à mon code.
 
 ---
-
-## 🛠️ Comment tester mon projet ?
-Le plus simple pour vous est de :
-1. Télécharger le fichier `projet_clara_final.sql`.
-2. Créer une base vide dans pgAdmin.
-3. Faire un clic-droit > **Restore** et choisir mon fichier.
-
-Tout devrait s'installer (tables + les 200 voitures + le trigger).
