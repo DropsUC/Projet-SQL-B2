@@ -1,0 +1,50 @@
+-- 01_creation_tables.sql
+-- Structure de la base de données
+-- contient les CREATE TABLE
+
+DROP TABLE IF EXISTS reservations CASCADE;
+DROP TABLE IF EXISTS utilisateurs CASCADE;
+DROP TABLE IF EXISTS vehicules CASCADE;
+DROP TABLE IF EXISTS marques CASCADE;
+DROP TABLE IF EXISTS energies CASCADE;
+
+CREATE TABLE marques (
+    id_marque SERIAL PRIMARY KEY,
+    nom_marque VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE energies (
+    id_energie SERIAL PRIMARY KEY,
+    nom_energie VARCHAR(100) NOT NULL UNIQUE
+);
+
+CREATE TABLE vehicules (
+    id_vehicule INTEGER PRIMARY KEY,
+    modele VARCHAR(100),
+    annee INTEGER,
+    autonomie_km INTEGER,
+    immatriculation VARCHAR(20) UNIQUE,
+    etat VARCHAR(50),
+    localisation VARCHAR(100),
+    id_marque INTEGER REFERENCES marques(id_marque),
+    id_energie INTEGER REFERENCES energies(id_energie)
+);
+
+CREATE TABLE utilisateurs (
+    id_utilisateur SERIAL PRIMARY KEY,
+    nom VARCHAR(100),
+    prenom VARCHAR(100),
+    email VARCHAR(150) UNIQUE,
+    ville VARCHAR(100),
+    date_inscription DATE
+);
+
+CREATE TABLE reservations (
+    id_reservation SERIAL PRIMARY KEY,
+    date_debut TIMESTAMP,
+    date_fin TIMESTAMP,
+    statut VARCHAR(50) DEFAULT 'Terminée',
+    cout_total DECIMAL(10, 2),
+    id_utilisateur INTEGER REFERENCES utilisateurs(id_utilisateur),
+    id_vehicule INTEGER REFERENCES vehicules(id_vehicule)
+);
