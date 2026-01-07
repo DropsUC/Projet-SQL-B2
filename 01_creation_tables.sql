@@ -20,14 +20,15 @@ CREATE TABLE energies (
 
 CREATE TABLE vehicules (
     id_vehicule INTEGER PRIMARY KEY,
+    marque VARCHAR(100),
     modele VARCHAR(100),
     annee INTEGER,
+    energie VARCHAR(20) CHECK (energie = 'Electrique'),
     autonomie_km INTEGER,
     immatriculation VARCHAR(20) UNIQUE,
     etat VARCHAR(50),
     localisation VARCHAR(100),
-    id_marque INTEGER REFERENCES marques(id_marque),
-    id_energie INTEGER REFERENCES energies(id_energie)
+    id_station INT REFERENCES station(id_station)
 );
 
 CREATE TABLE utilisateurs (
