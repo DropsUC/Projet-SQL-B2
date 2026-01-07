@@ -7,8 +7,6 @@
 -- Dumped from database version 18.1
 -- Dumped by pg_dump version 18.0
 
--- Started on 2026-01-07 19:22:02
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
