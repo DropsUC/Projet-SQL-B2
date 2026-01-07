@@ -1,29 +1,34 @@
-# 📘 Dossier d'Analyse (Méthode Merise)
+### 1. Dictionnaire des Données
 
-Ce document détaille la conception de la base de données **clara Mobility**.
+Ce tableau recense toutes les informations réellement implémentées dans la base de données PostgreSQL.
 
----
-
-## 1. Dictionnaire des Données
-Ce tableau recense toutes les informations stockées dans le système.
-
-| Code | Libellé | Type | Contrainte |
-| :--- | :--- | :--- | :--- |
-| **id_vehicule** | Identifiant unique du véhicule | Entier | PRIMARY KEY |
-| **immatriculation** | Plaque d'immatriculation | Varchar(20) | UNIQUE |
-| **modele** | Modèle commercial | Varchar(100) | - |
-| **annee** | Année de mise en service | Entier | - |
-| **autonomie_km** | Autonomie batterie | Entier | - |
-| **etat** | État (Disponible, Panne...) | Varchar(50) | - |
-| **id_marque** | Référence à la marque | Entier | FOREIGN KEY |
-| **id_energie** | Référence à l'énergie | Entier | FOREIGN KEY |
-| **id_utilisateur** | Identifiant unique du client | Entier | PRIMARY KEY |
-| **nom** | Nom de famille | Varchar(100) | - |
-| **prenom** | Prénom | Varchar(100) | - |
-| **email** | Adresse email client | Varchar(150) | UNIQUE |
-| **date_debut** | Début de la location | Timestamp | - |
-| **date_fin** | Fin de la location | Timestamp | - |
-| **cout_total** | Montant facturé | Decimal | - |
+| Table | Code | Libellé | Type | Description |
+| :--- | :--- | :--- | :--- | :--- |
+| **UTILISATEURS** | `id_utilisateur` | Identifiant | Serial (PK) | Clé unique auto-incrémentée |
+| | `nom` | Nom | Varchar | Nom de famille |
+| | `prenom` | Prénom | Varchar | Prénom de l'utilisateur |
+| | `email` | Email | Varchar | Unique (contact et identification) |
+| | `ville` | Ville | Varchar | Lieu de résidence |
+| | `date_inscription`| Date Inscription| Date | Date de création du compte |
+| **VEHICULES** | `id_vehicule` | Identifiant | Integer (PK)| Identifiant unique du véhicule |
+| | `modele` | Modèle | Varchar | Ex: 'Zoe', 'Model 3' |
+| | `immatriculation`| Immatriculation | Varchar | Unique (Plaque minéralogique) |
+| | `autonomie_km` | Autonomie | Integer | Portée maximale en km |
+| | `etat` | État | Varchar | 'Disponible', 'En maintenance', 'Hors service' |
+| | `localisation` | Localisation | Varchar | Ville où est stationné le véhicule |
+| | `id_marque` | Réf. Marque | Integer (FK)| Lien vers la table Marques |
+| | `id_energie` | Réf. Énergie | Integer (FK)| Lien vers la table Énergies |
+| **RESERVATIONS** | `id_reservation` | Identifiant | Serial (PK) | Numéro de la réservation |
+| | `date_debut` | Date Début | Timestamp | Date et heure de départ |
+| | `date_fin` | Date Fin | Timestamp | Date et heure de retour |
+| | `statut` | Statut | Varchar | 'En cours', 'Terminée', 'Annulée' |
+| | `cout_total` | Coût | Numeric | Montant facturé au client |
+| | `id_utilisateur` | Réf. Client | Integer (FK)| Qui a loué le véhicule |
+| | `id_vehicule` | Réf. Véhicule | Integer (FK)| Quel véhicule est loué |
+| **MARQUES** | `id_marque` | Identifiant | Serial (PK) | Identifiant technique |
+| | `nom_marque` | Marque | Varchar | Ex: 'Renault', 'Tesla' |
+| **ENERGIES** | `id_energie` | Identifiant | Serial (PK) | Identifiant technique |
+| | `nom_energie` | Énergie | Varchar | Ex: 'Electrique' |
 
 ---
 
