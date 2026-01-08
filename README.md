@@ -11,9 +11,8 @@ J'ai importé les 200 véhicules du fichier CSV fourni et j'ai ajouté toute la 
 ## 📂 Comment j'ai organisé mes fichiers
 Pour que ce soit plus simple à corriger, j'ai découpé mon code en plusieurs parties :
 
-* **`01_creation_tables.sql`** : C'est le squelette de la base. J'y crée les tables vides (Véhicules, Marques, Clients...) avec les bonnes clés primaires et étrangères.
-* **`02_donnees_demo.sql`** : Quelques lignes d'exemple pour montrer comment on remplit les tables manuellement.
-* **`03_logique_metier.sql`** : C'est ici qu'il y a les **bonus**. J'ai créé une Vue pour simplifier les factures et un **Trigger** qui empêche de réserver une voiture si elle est en panne.
+* **`01_creation_tables.sql`** : C'est là qu'il y a base PostgreSQL.
+* **`queries.sql`** : C'est ici qu'il y a les requêtes SQL avancés.
 * **`projet_clara_final.sql`** : **Le fichier complet** (Backup). Il contient tout (les 200 voitures + la structure). C'est celui-là qu'il faut utiliser pour restaurer la base.
 
 ---
@@ -49,6 +48,6 @@ J'ai généré le schéma visuel directement avec l'outil de pgAdmin (ERD) pour 
 ---
 
 ### Utilisation 
-1. Executez **create_tables.sql**
-2. Import **vehicules_clara_2025.csv** dans la table vehicules (click droit table vehicules --> Import/Export Data, Option Header : ON, Delimiter : ",")
-3. Executez **queries.sql**
+1. Executez **`sql_cripts\create_tables.sql`**
+2. Import **`date\vehicules_clara_2025.csv`** dans la table vehicules (click droit table vehicules --> Import/Export Data, Option Header : ON, Delimiter : ",")
+3. Executez **`sql_cripts\queries.sql`**
