@@ -65,11 +65,10 @@ FOR EACH ROW
 EXECUTE FUNCTION update_etat_vehicule();
 
 -- TEST : 
--- INSERT INTO public.utilisateurs (id_utilisateur, nom, prenom, email, ville, date_inscription)
--- VALUES (1, 'NomTest', 'PrenomTest', 'test@clara.fr', 'Paris', CURRENT_DATE);
+INSERT INTO public.utilisateurs (id_utilisateur, nom, prenom, email, ville, date_inscription)
+VALUES (1, 'NomTest', 'PrenomTest', 'test@clara.fr', 'Paris', CURRENT_DATE);
 
--- ENSUITE
-
+-- ENSUITE :
 INSERT INTO public.reservations (date_debut, date_fin, id_utilisateur, id_vehicule, cout_total)
 VALUES (CURRENT_TIMESTAMP, CURRENT_TIMESTAMP + interval '2 hours', 1, 8, 40.00);
 SELECT id_vehicule, modele, etat FROM vehicules WHERE id_vehicule = 8;
@@ -127,5 +126,6 @@ $$ LANGUAGE plpgsql;
 -- SELECT marque, modele, autonomie_km, calculer_autonomie_restante(10, 60) AS km_restants
 -- FROM vehicules
 -- WHERE id_vehicule = 10;
+
 
 
