@@ -48,6 +48,6 @@ J'ai généré le schéma visuel directement avec l'outil de pgAdmin (ERD) pour 
 ---
 
 ### Utilisation 
-1. Executez **`sql_cripts\create_tables.sql`**
-2. Import **`date\vehicules_clara_2025.csv`** dans la table vehicules (click droit table vehicules --> Import/Export Data, Option Header : ON, Delimiter : ",")
-3. Executez **`sql_cripts\queries.sql`**
+* Executez **`sql_cripts\create_tables.sql`**
+* Import **`date\vehicules_clara_2025.csv`** dans la table vehicules (click droit table vehicules --> Import/Export Data, Option Header : ON, Delimiter : ",")
+* Executez **`sql_cripts\queries.sql`**
