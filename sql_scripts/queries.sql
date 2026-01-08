@@ -99,16 +99,15 @@ FOR EACH ROW EXECUTE FUNCTION log_changement_etat();
 
 -- 9 Estimer le coût d'une location.
 
-CREATE OR REPLACE FUNCTION calculer_autonomie_restante(v_id INT, pourcentage_batterie INT) 
-RETURNS FLOAT AS $$
+CREATE OR REPLACE FUNCTION calculer_cout_location(debut TIMESTAMP, fin TIMESTAMP)
+RETURNS DECIMAL AS $$
 DECLARE
-    autonomie_max INT;
+    nb_jours INTEGER;
 BEGIN
-    SELECT autonomie_km INTO autonomie_max FROM vehicules WHERE id_vehicule = v_id;
-    RETURN (autonomie_max * pourcentage_batterie) / 100.0;
+    nb_jours := EXTRACT(DAY FROM (fin - debut)) + 1;
+    RETURN nb_jours * 40.00;
 END;
 $$ LANGUAGE plpgsql;
-
 -- TEST : 
 SELECT calculer_cout_location('2025-01-01 10:00:00', '2025-01-03 10:00:00') AS prix_test;
 
@@ -128,3 +127,4 @@ $$ LANGUAGE plpgsql;
 SELECT marque, modele, autonomie_km, calculer_autonomie_restante(10, 60) AS km_restants
 FROM vehicules
 WHERE id_vehicule = 10;
+
