@@ -11,7 +11,7 @@ J'ai importé les 200 véhicules du fichier CSV fourni et j'ai ajouté toute la 
 ## 📂 Comment j'ai organisé mes fichiers
 Pour que ce soit plus simple à corriger, j'ai découpé mon code en plusieurs parties :
 
-* **`01_creation_tables.sql`** : C'est là qu'il y a base PostgreSQL.
+* **`create_tables.sql`** : C'est là qu'il y a base PostgreSQL.
 * **`queries.sql`** : C'est ici qu'il y a les requêtes SQL avancés.
 * **`projet_clara_final.sql`** : **Le fichier complet** (Backup). Il contient tout (les 200 voitures + la structure). C'est celui-là qu'il faut utiliser pour restaurer la base.
 
