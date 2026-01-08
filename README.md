@@ -49,6 +49,6 @@ J'ai généré le schéma visuel directement avec l'outil de pgAdmin (ERD) pour 
 ---
 
 ### Utilisation 
-1. Executez create_tables.sql
-2. Import vehicules_clara_2025.csv dans la table vehicules (click droit table vehicules --> Import/Export Data, Option Header : ON, Delimiter : ",")
-3. Executez queries.sql
+1. Executez **create_tables.sql**
+2. Import **vehicules_clara_2025.csv** dans la table vehicules (click droit table vehicules --> Import/Export Data, Option Header : ON, Delimiter : ",")
+3. Executez **queries.sql**
