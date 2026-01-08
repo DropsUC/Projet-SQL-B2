@@ -1,44 +1,28 @@
 -- 01_creation_tables.sql
 -- Structure de la base de données
+-- contient les CREATE TABLE
 
+DROP TABLE IF EXISTS clients CASCADE;
 DROP TABLE IF EXISTS reservations CASCADE;
 DROP TABLE IF EXISTS utilisateurs CASCADE;
 DROP TABLE IF EXISTS vehicules CASCADE;
-DROP TABLE IF EXISTS station CASCADE; -- Ajouté pour nettoyer proprement
-DROP TABLE IF EXISTS marques CASCADE;
 DROP TABLE IF EXISTS energies CASCADE;
-
--- 1. On crée d'abord les tables qui n'ont pas de dépendances
-CREATE TABLE marques (
-    id_marque SERIAL PRIMARY KEY,
-    nom_marque VARCHAR(100) NOT NULL UNIQUE
-);
 
 CREATE TABLE energies (
     id_energie SERIAL PRIMARY KEY,
     nom_energie VARCHAR(100) NOT NULL UNIQUE
 );
 
-CREATE TABLE station (
-    id_station SERIAL PRIMARY KEY,
-    nom VARCHAR(100),
-    adresse VARCHAR(255),
-    capacite INT
-);
-
--- 2. Ensuite les tables qui dépendent des autres (Clés étrangères)
 CREATE TABLE vehicules (
     id_vehicule INTEGER PRIMARY KEY,
     marque VARCHAR(100),
     modele VARCHAR(100),
     annee INTEGER,
-    -- J'ai assoupli le check car si ton CSV contient "Hybrid", l'import planterait avec 'Electrique' strict
-    energie VARCHAR(50), 
-    autonomie_km INTEGER,
+    energie VARCHAR(20),
+    autonomie_km INT CHECK (autonomie_km > 0),
     immatriculation VARCHAR(20) UNIQUE,
     etat VARCHAR(50),
-    localisation VARCHAR(100),
-    id_station INT REFERENCES station(id_station)
+    localisation VARCHAR(100)
 );
 
 CREATE TABLE utilisateurs (
@@ -58,4 +42,13 @@ CREATE TABLE reservations (
     cout_total DECIMAL(10, 2),
     id_utilisateur INTEGER REFERENCES utilisateurs(id_utilisateur),
     id_vehicule INTEGER REFERENCES vehicules(id_vehicule)
+);
+
+CREATE TABLE clients (
+    id_client SERIAL PRIMARY KEY,
+    nom VARCHAR(50) NOT NULL,
+    prenom VARCHAR(50) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    telephone VARCHAR(20),
+    date_inscription DATE DEFAULT CURRENT_DATE
 );
