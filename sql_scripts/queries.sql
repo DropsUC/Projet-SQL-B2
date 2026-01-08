@@ -123,9 +123,10 @@ END;
 $$ LANGUAGE plpgsql;
 
 -- TEST : 
--- SELECT marque, modele, autonomie_km, calculer_autonomie_restante(10, 60) AS km_restants
--- FROM vehicules
--- WHERE id_vehicule = 10;
+SELECT marque, modele, autonomie_km, calculer_autonomie_restante(10, 60) AS km_restants
+FROM vehicules
+WHERE id_vehicule = 10;
+
 
 
 
